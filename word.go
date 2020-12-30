@@ -1,19 +1,22 @@
 package english
 
+import "fmt"
+
 type Word struct {
-	group Group
-	v     string
+	Mode
+	v string
 }
 
-func (me Word) Group() Group   { return me.group }
-func (me Word) String() string { return me.v }
+func (me Word) String() string { return fmt.Sprintf("%s: %s", me.Mode, me.v) }
 
-//go:generate stringer -type=Group
-type Group int
+//go:generate stringer -type=Mode
+type Mode uint32
 
 const (
-	Verb Group = iota
+	Verb Mode = 1 << (32 - 1 - iota)
 	Noun
 	Adjective
 	Injection
 )
+
+func (me Mode) Is(v Mode) bool { return (me & v) == v }
