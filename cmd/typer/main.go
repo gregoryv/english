@@ -55,7 +55,8 @@ func (me *GameView) Run() Mode {
 	rtext := []rune(text)
 	screen.Sync()
 
-	start := time.Now()
+	var start time.Time
+	var started bool
 	long := longestWord(lang)
 	for {
 		switch ev := screen.PollEvent().(type) {
@@ -99,6 +100,10 @@ func (me *GameView) Run() Mode {
 				screen.HideCursor()
 				return &GameOver{screen, style}
 			}
+			if !started {
+				start = time.Now()
+				started = true
+			}
 		case *tcell.EventResize:
 			screen.Sync()
 		}
@@ -116,7 +121,7 @@ type GameOver struct {
 
 func (me *GameOver) Run() Mode {
 	screen, style := me.screen, me.style
-	centerText(screen, style, 3, ` Game Over 
+	centerText(screen, style.Foreground(tcell.ColorYellow), 3, ` Game Over 
  Press ENTER to continue. 
                           `)
 	screen.Sync()
