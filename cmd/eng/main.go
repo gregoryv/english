@@ -39,7 +39,7 @@ func main() {
 		}
 
 	case r != "":
-		word := english.RandWord(wordsBy(lang, r))
+		word := lang.RandWord()
 		fmt.Println(word)
 	default:
 		fmt.Println(lang)

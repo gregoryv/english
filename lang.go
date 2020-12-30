@@ -28,6 +28,7 @@ func NewLanguage() *Language {
 		i++
 	}
 	lang.adj = words[adjStart:i]
+	lang.Generator = NewGenerator(lang)
 	return lang
 }
 
@@ -36,6 +37,7 @@ type Language struct {
 	nouns []Word
 	adj   []Word
 	words []Word
+	*Generator
 }
 
 func (me *Language) Verbs() []Word      { return me.verbs }
