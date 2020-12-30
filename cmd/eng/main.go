@@ -28,7 +28,7 @@ func main() {
 	case !cli.Ok():
 		fmt.Fprintln(w, cli.Error())
 		fmt.Fprintln(w, "Try --help for more information")
-
+		os.Exit(1)
 	}
 
 	lang := english.NewLanguage()
