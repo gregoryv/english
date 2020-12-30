@@ -2,7 +2,7 @@ package english
 
 import "testing"
 
-func Test_Dict_RandWord(t *testing.T) {
+func Test_Language_RandWord(t *testing.T) {
 	lang := NewLanguage()
 	w := lang.RandWord()
 	if w.String() == "" {
@@ -11,6 +11,26 @@ func Test_Dict_RandWord(t *testing.T) {
 	g := w.Group()
 	if g < 0 {
 		t.Error("negative group")
+	}
+}
+
+func Test_Language(t *testing.T) {
+	lang := NewLanguage()
+	if len(lang.Verbs()) == 0 {
+		t.Error("no verbs")
+	}
+	if len(lang.Nouns()) == 0 {
+		t.Error("no nouns")
+	}
+	if len(lang.Adjectives()) == 0 {
+		t.Error("no adjectives")
+	}
+}
+
+func Test_Language_String(t *testing.T) {
+	lang := NewLanguage()
+	if lang.String() == "" {
+		t.Error("empty string")
 	}
 }
 

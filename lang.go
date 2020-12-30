@@ -1,11 +1,15 @@
 package english
 
-import "math/rand"
+import (
+	"fmt"
+	"math/rand"
+)
 
 func NewLanguage() *Language {
 	verbs := Verbs()
 	nouns := Nouns()
-	words := make([]Word, len(verbs)+len(nouns))
+	adj := Adjectives()
+	words := make([]Word, len(verbs)+len(nouns)+len(adj))
 	lang := &Language{words: words}
 	var i int
 	for _, word := range verbs {
@@ -19,6 +23,12 @@ func NewLanguage() *Language {
 		i++
 	}
 	lang.nouns = words[nounStart:i]
+	adjStart := i
+	for _, word := range adj {
+		words[i] = Word{Adjective, word}
+		i++
+	}
+	lang.adj = words[adjStart:i]
 	return lang
 }
 
@@ -37,4 +47,13 @@ func (me *Language) Words() []Word      { return me.words }
 func (me *Language) RandWord() Word {
 	w := me.Words()
 	return w[rand.Intn(len(w))]
+}
+
+func (me *Language) String() string {
+	return fmt.Sprintf("%v verbs, %v nouns, %v adjectives, %v words",
+		len(me.verbs),
+		len(me.nouns),
+		len(me.adj),
+		len(me.words),
+	)
 }
