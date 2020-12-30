@@ -2,7 +2,6 @@ package english
 
 import (
 	"fmt"
-	"math/rand"
 )
 
 func NewLanguage() *Language {
@@ -43,11 +42,6 @@ func (me *Language) Verbs() []Word      { return me.verbs }
 func (me *Language) Nouns() []Word      { return me.nouns }
 func (me *Language) Adjectives() []Word { return me.adj }
 func (me *Language) Words() []Word      { return me.words }
-
-func (me *Language) RandWord() Word {
-	w := me.Words()
-	return w[rand.Intn(len(w))]
-}
 
 func (me *Language) String() string {
 	return fmt.Sprintf("%v verbs, %v nouns, %v adjectives, %v words",

@@ -15,7 +15,7 @@ func main() {
 
 	switch *r {
 	case "word":
-		fmt.Println(lang.RandWord())
+		fmt.Println(english.RandWord(lang.Words()))
 	default:
 		fmt.Println(lang)
 	}

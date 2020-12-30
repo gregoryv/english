@@ -4,7 +4,7 @@ import "testing"
 
 func Test_Language_RandWord(t *testing.T) {
 	lang := NewLanguage()
-	w := lang.RandWord()
+	w := RandWord(lang.Words())
 	if w.String() == "" {
 		t.Errorf("%s: %s", w.Group(), w)
 	}
