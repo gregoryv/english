@@ -53,6 +53,7 @@ func (me *GameView) Run() Mode {
 	fillText(screen, style, 0, 0, text)
 	screen.ShowCursor(pos.x, pos.y)
 	rtext := []rune(text)
+	puts(screen, style.Foreground(tcell.ColorYellow), 0, h-1, "Start typing")
 	screen.Sync()
 
 	var start time.Time
@@ -103,6 +104,8 @@ func (me *GameView) Run() Mode {
 			if !started {
 				start = time.Now()
 				started = true
+				hline := strings.Repeat(" ", h)
+				puts(screen, style, 0, h-1, hline)
 			}
 		case *tcell.EventResize:
 			screen.Sync()
