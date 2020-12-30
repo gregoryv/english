@@ -3,8 +3,8 @@ package english
 import "testing"
 
 func Test_Dict_RandWord(t *testing.T) {
-	dict := NewDict()
-	w := dict.RandWord()
+	lang := NewLanguage()
+	w := lang.RandWord()
 	if w.String() == "" {
 		t.Errorf("%s: %s", w.Group(), w)
 	}

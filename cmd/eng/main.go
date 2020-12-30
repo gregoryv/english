@@ -11,7 +11,7 @@ func main() {
 	r := flag.String("r", "", "random [word]")
 	flag.Parse()
 
-	eng := english.NewDict()
+	eng := english.NewLanguage()
 
 	switch *r {
 	case "word":
