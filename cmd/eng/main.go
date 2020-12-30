@@ -11,17 +11,19 @@ func main() {
 	r := flag.String("r", "", "random [word]")
 	flag.Parse()
 
+	eng := english.NewDict()
+
 	switch *r {
 	case "word":
-		fmt.Println(english.RandWord())
+		fmt.Println(eng.RandWord())
 	default:
-		verbs := english.Verbs()
-		nouns := english.Nouns()
-		adj := english.Adjectives()
+		verbs := eng.Verbs()
+		nouns := eng.Nouns()
+		adj := eng.Adjectives()
 
 		fmt.Println(len(verbs), "verbs")
 		fmt.Println(len(nouns), "nouns")
 		fmt.Println(len(adj), "adjectives")
-		fmt.Println(len(english.Words()), "words")
+		fmt.Println(len(eng.Words()), "words")
 	}
 }

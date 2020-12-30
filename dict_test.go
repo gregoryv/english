@@ -2,8 +2,9 @@ package english
 
 import "testing"
 
-func Test_RandWord(t *testing.T) {
-	w := RandWord()
+func Test_Dict_RandWord(t *testing.T) {
+	dict := NewDict()
+	w := dict.RandWord()
 	if w.String() == "" {
 		t.Errorf("%s: %s", w.Group(), w)
 	}
