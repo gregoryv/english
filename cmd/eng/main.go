@@ -1,33 +1,63 @@
 package main
 
 import (
-	"flag"
 	"fmt"
+	"os"
 
+	"github.com/gregoryv/cmdline"
 	"github.com/gregoryv/english"
 )
 
 func main() {
-	r := flag.String("r", "", "random: word, verb, noun or adjective(adj)")
-	flag.Parse()
+	var (
+		cli  = cmdline.NewParser(os.Args...)
+		help = cli.Flag("-h, --help")
+		p    = cli.Option(
+			"-p, --print",
+			"word, verb, noun or adjective(adj)",
+		).String("")
 
-	lang := english.NewLanguage()
+		r = cli.Option("-r", "random: word, verb, noun or adjective(adj)").String("")
+		w = os.Stderr
+	)
 
 	switch {
-	case *r != "":
-		var words func() []english.Word
-		switch *r {
-		case "word":
-			words = lang.Words
-		case "verb":
-			words = lang.Verbs
-		case "noun":
-			words = lang.Nouns
-		case "adjective", "adj":
-			words = lang.Adjectives
+	case help:
+		cli.WriteUsageTo(w)
+
+	case !cli.Ok():
+		fmt.Fprintln(w, cli.Error())
+		fmt.Fprintln(w, "Try --help for more information")
+
+	}
+
+	lang := english.NewLanguage()
+	switch {
+	case p != "":
+		for _, word := range wordsBy(lang, p) {
+			fmt.Println(word)
 		}
-		fmt.Println(english.RandWord(words()))
+
+	case r != "":
+		word := english.RandWord(wordsBy(lang, r))
+		fmt.Println(word)
 	default:
 		fmt.Println(lang)
 	}
+}
+
+func wordsBy(lang *english.Language, m string) []english.Word {
+	switch m {
+	case "word":
+		return lang.Words()
+	case "verb":
+		return lang.Verbs()
+	case "noun":
+		return lang.Nouns()
+	case "adjective", "adj":
+		return lang.Adjectives()
+	}
+	fmt.Println("Unknown:", m)
+	os.Exit(1)
+	return nil
 }
