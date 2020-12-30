@@ -17,7 +17,7 @@ func main() {
 			"word, verb, noun or adjective(adj)",
 		).String("")
 
-		r = cli.Option("-r", "random: word, verb, noun or adjective(adj)").String("")
+		r = cli.Option("-r, --random", "word, verb, noun or adjective(adj)").String("")
 		w = os.Stderr
 	)
 
