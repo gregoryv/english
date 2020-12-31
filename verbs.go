@@ -3,11 +3,10 @@ package english
 import "strings"
 
 func Verbs() []string {
-	return strings.Split(strings.TrimSpace(verbs), "\n")
+	return strings.Split(verbs, "\n")
 }
 
-const verbs = `
-accept
+const verbs = `accept
 accuse
 achieve
 acknowledge
@@ -246,7 +245,6 @@ listen
 look
 lose
 love
-
 maintain
 make
 manage
@@ -279,7 +277,6 @@ overcome
 overtake
 owe
 own
-
 paint
 participate
 pay
@@ -446,5 +443,4 @@ will
 win
 wish
 would
-write
-`
+write`

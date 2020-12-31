@@ -3,11 +3,10 @@ package english
 import "strings"
 
 func Adjectives() []string {
-	return strings.Split(strings.TrimSpace(adjectives), "\n")
+	return strings.Split(adjectives, "\n")
 }
 
-const adjectives = `
-adorable
+const adjectives = `adorable
 adventurous
 aggressive
 agreeable
@@ -142,7 +141,6 @@ jittery
 jolly
 joyous
 kind
-
 light
 lively
 lonely
@@ -234,5 +232,4 @@ worried
 worrisome
 wrong
 zany
-zealous
-`
+zealous`

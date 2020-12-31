@@ -3,11 +3,10 @@ package english
 import "strings"
 
 func Nouns() []string {
-	return strings.Split(strings.TrimSpace(nouns), "\n")
+	return strings.Split(nouns, "\n")
 }
 
-const nouns = `
-account
+const nouns = `account
 act
 adjustment
 advertisement
@@ -605,5 +604,4 @@ work
 worm
 wound
 writing
-year
-`
+year`

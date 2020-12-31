@@ -1,6 +1,9 @@
 package english
 
-import "testing"
+import (
+	"strings"
+	"testing"
+)
 
 func Test_Language_RandWord(t *testing.T) {
 	lang := NewLanguage()
@@ -25,6 +28,12 @@ func Test_Language_RandWord(t *testing.T) {
 
 func Test_Language(t *testing.T) {
 	lang := NewLanguage()
+	for _, word := range lang.Words() {
+		w := strings.TrimSpace(word.String())
+		if w == "" {
+			t.Error("found empty word")
+		}
+	}
 	if len(lang.Verbs()) == 0 {
 		t.Error("no verbs")
 	}

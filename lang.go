@@ -2,6 +2,7 @@ package english
 
 import (
 	"fmt"
+	"strings"
 )
 
 func NewLanguage() *Language {
@@ -28,10 +29,14 @@ type Language struct {
 }
 
 // AddWords adds the slice of words with the given mode. Returns slice
-// of the added words.
+// of the added words. Empty strings cause a panic.
 func (me *Language) AddWords(m Mode, inwords []string) []Word {
 	from := len(me.words)
 	for _, word := range inwords {
+		if len(strings.TrimSpace(word)) == 0 {
+			last := me.words[len(me.words)-1].String()
+			panic(fmt.Errorf("Empty word after %v %s", m, last))
+		}
 		me.words = append(me.words, Word{m, word})
 	}
 	return me.words[from : from+len(inwords)]
