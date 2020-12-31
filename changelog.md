@@ -6,6 +6,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [unreleased]
 
+- Improve randomness with seed from crypto/rand
 - Colorize cmd/typer startup text
 - Add adverbs and prepositions
 

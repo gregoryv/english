@@ -24,6 +24,7 @@ func main() {
 	switch {
 	case help:
 		cli.WriteUsageTo(w)
+		os.Exit(0)
 
 	case !cli.Ok():
 		fmt.Fprintln(w, cli.Error())

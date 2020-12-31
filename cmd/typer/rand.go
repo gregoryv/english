@@ -1,16 +1,10 @@
 package main
 
 import (
-	"math/rand"
 	"strings"
-	"time"
 
 	"github.com/gregoryv/english"
 )
-
-func init() {
-	rand.Seed(time.Now().Unix())
-}
 
 func randomText(lang *english.Language) string {
 	sentences := make([]string, 5)

@@ -1,12 +1,20 @@
 package english
 
 import (
+	crand "crypto/rand"
+	"encoding/binary"
 	"math/rand"
 	"time"
 )
 
 func init() {
-	rand.Seed(time.Now().Unix())
+	var b [8]byte
+	_, err := crand.Read(b[:])
+	if err != nil {
+		rand.Seed(time.Now().Unix())
+		return
+	}
+	rand.Seed(int64(binary.LittleEndian.Uint64(b[:])))
 }
 
 func RandWord(words []Word) Word {
