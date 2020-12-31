@@ -1,26 +1,15 @@
+/*
+Package english provides words in the english language.
+
+
+*/
 package english
 
 import "strings"
 
-func Prepositions() []string {
-	return strings.Fields(SinglePrepositionWords)
-}
-
-func Adverbs() []string {
-	all := make([]string, 0)
-	for _, words := range []string{
-		HowAdverbWords,
-		WhenAdverbWords,
-		WhereAdverbWords,
-		WhatExtentAdverbWords,
-	} {
-		all = append(all, strings.Fields(words)...)
-	}
-	return all
-}
-
+// Words returns all the english words defined by this package
 func Words() []string {
-	all := make([]string, 0)
+	all := make([]string, 0, 1394)
 	for _, words := range []string{
 		SinglePrepositionWords,
 		HowAdverbWords,

@@ -17,7 +17,17 @@ func init() {
 	rand.Seed(int64(binary.LittleEndian.Uint64(b[:])))
 }
 
+// RandomWord returns a random english word.
 func RandomWord() string {
+	return RandomWords(1)[0]
+}
+
+// RandomWords returns a slice of random english words.
+func RandomWords(n int) []string {
+	res := make([]string, n)
 	words := Words()
-	return words[rand.Intn(len(words))]
+	for i := range res {
+		res[i] = words[rand.Intn(len(words))]
+	}
+	return res
 }
