@@ -3,11 +3,10 @@ package english
 import "strings"
 
 func Prepositions() []string {
-	return strings.Split(strings.TrimSpace(prepositions), "\n")
+	return strings.Split(SingleWordPrepositions, "\n")
 }
 
-const prepositions = `
-about
+const SingleWordPrepositions = `about
 beside
 near
 to
@@ -60,5 +59,4 @@ into
 than
 beneath
 like
-through
-`
+through`
