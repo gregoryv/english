@@ -1,3 +1,4 @@
+// Command typer is a game for practicing typing.
 package main
 
 import (
