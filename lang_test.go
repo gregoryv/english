@@ -12,6 +12,8 @@ func Test_Language_RandWord(t *testing.T) {
 	case w.Is(Verb):
 	case w.Is(Noun):
 	case w.Is(Adjective):
+	case w.Is(Adverb):
+	case w.Is(Preposition):
 	default:
 		t.Error("is:", w.Mode.String())
 	}

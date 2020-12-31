@@ -16,6 +16,7 @@ const (
 	Adjective
 	Injection
 	Adverb
+	Preposition
 )
 
 func (me Mode) Is(v Mode) bool { return (me & v) == v }

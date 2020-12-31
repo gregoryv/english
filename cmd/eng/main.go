@@ -42,7 +42,12 @@ func main() {
 		word := lang.RandWord()
 		fmt.Println(word)
 	default:
-		fmt.Println(lang)
+		fmt.Println(len(lang.Verbs()), "verbs")
+		fmt.Println(len(lang.Adverbs()), "adverbs")
+		fmt.Println(len(lang.Nouns()), "nouns")
+		fmt.Println(len(lang.Adjectives()), "adjectives")
+		fmt.Println(len(lang.Prepositions()), "prepositions")
+		fmt.Println(len(lang.Words()), "words")
 	}
 }
 
