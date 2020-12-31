@@ -17,6 +17,7 @@ func init() {
 	rand.Seed(int64(binary.LittleEndian.Uint64(b[:])))
 }
 
-func RandWord(words []Word) Word {
+func RandomWord() string {
+	words := Words()
 	return words[rand.Intn(len(words))]
 }

@@ -1,33 +1,8 @@
 package english
 
 import (
-	"math/rand"
 	"strings"
 )
-
-func NewGenerator() *Generator {
-	return &Generator{}
-}
-
-type Generator struct{}
-
-// RandWord returns a random word.
-func (me *Generator) RandWord() string {
-	return randWord(Words())
-}
-
-func randWord(words []string) string {
-	return words[rand.Intn(len(words))]
-}
-
-// RandSentence returns a random sentence of n words.
-func (me *Generator) RandSentence(n int) Sentence {
-	s := make([]string, n)
-	for i := range s {
-		s[i] = me.RandWord()
-	}
-	return s
-}
 
 type Sentence []string
 

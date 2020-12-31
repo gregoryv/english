@@ -11,7 +11,6 @@ import (
 
 	"github.com/gdamore/tcell"
 	"github.com/gdamore/tcell/encoding"
-	"github.com/gregoryv/english"
 	"github.com/mattn/go-runewidth"
 )
 
@@ -45,8 +44,7 @@ func (me *GameView) Run() Mode {
 	pos := Position{y: h/2 + 1} // input start
 	index := 0                  // position in text
 
-	lang := english.NewLanguage()
-	text := randomText(lang)
+	text := randomText()
 
 	drawLines(screen, style)
 	clearDisplay(screen, style)
@@ -58,7 +56,7 @@ func (me *GameView) Run() Mode {
 
 	var start time.Time
 	var started bool
-	long := longestWord(lang)
+	long := longestWord()
 	for {
 		switch ev := screen.PollEvent().(type) {
 		case *tcell.EventKey:
