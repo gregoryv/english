@@ -5,9 +5,12 @@ Package english provides words in the english language.
 */
 package english
 
-import "strings"
+import (
+	"sort"
+	"strings"
+)
 
-// Words returns all the english words defined by this package
+// Words returns sorted list of all the english words defined by this package.
 func Words() []string {
 	all := make([]string, 0, 1394)
 	for _, words := range []string{
@@ -23,18 +26,34 @@ func Words() []string {
 	} {
 		all = append(all, strings.Fields(words)...)
 	}
+	sort.Strings(all)
 	return all
 }
 
+// The words are sorted.
 const (
-	SinglePrepositionWords = `about beside near to above between of
+	SinglePrepositionWords = _SinglePrepositionWords
+
+	HowAdverbWords        = _HowAdverbWords
+	WhenAdverbWords       = _WhenAdverbWords
+	WhereAdverbWords      = _WhereAdverbWords
+	WhatExtentAdverbWords = _WhatExtentAdverbWords
+
+	VerbWords      = _VerbWords
+	NounWords      = _NounWords
+	AdjectiveWords = _AdjectiveWords
+	QuestionWords  = _QuestionWords
+)
+
+const (
+	_SinglePrepositionWords = `about beside near to above between of
 towards across beyond off under after by on underneath against despite
 onto unlike along down opposite until among during out up around
 except outside upon as for over via at from past with before in round
 within behind inside since without below into than beneath like
 through`
 
-	HowAdverbWords = `absentmindedly adoringly awkwardly beatifully
+	_HowAdverbWords = `absentmindedly adoringly awkwardly beatifully
 briskly brutally carefully cheerfully competitively eagerly
 effortlessly extravagantly girlishly gracefully grimly happily
 halfheartedly hungrily lazily lifelessly loyally quickly quitely
@@ -42,16 +61,16 @@ quizzically really recklessly remorsefully ruthlessly savagely
 sloppily so stylishly unabashedly unevenly urgently well wishfully
 worriedly`
 
-	WhenAdverbWords = `after afterwards annually before daily never
+	_WhenAdverbWords = `after afterwards annually before daily never
 now soon still then today tomorrow weekly when yesterday`
 
-	WhereAdverbWords = `abroad anywhere away down everywhere here
+	_WhereAdverbWords = `abroad anywhere away down everywhere here
 home in inside out outside somewhere there underground upstairs`
 
-	WhatExtentAdverbWords = `extremely not quite rather really
+	_WhatExtentAdverbWords = `extremely not quite rather really
 terribly too very`
 
-	VerbWords = `accept accuse achieve acknowledge acquire adapt add
+	_VerbWords = `accept accuse achieve acknowledge acquire adapt add
 adjust admire admit adopt adore advise afford agree aim allow announce
 anticipate apologize appear apply appreciate approach approve argue
 arise arrange arrive ask assume assure astonish attach attempt attend
@@ -94,7 +113,7 @@ tend think threaten throw tiptoe tolerate translate try understand
 vacuum value vary volunteer wait wake walk want warn wash watch wave
 wear weep weigh whip will win wish would write`
 
-	NounWords = `account act adjustment advertisement agreement air
+	_NounWords = `account act adjustment advertisement agreement air
 amount amusement angle animal answer ant apparatus apple approval arch
 argument arm army art attack attempt attention attraction authority
 baby back bag balance ball band base basin basket bath bed bee
@@ -152,7 +171,7 @@ waste watch water wave wax way weather week weight wheel whip whistle
 wind window wine wing winter wire woman wood wool word work worm wound
 writing year`
 
-	AdjectiveWords = `adorable adventurous aggressive agreeable
+	_AdjectiveWords = `adorable adventurous aggressive agreeable
 alert alive amused angry annoyed annoying anxious arrogant ashamed
 attractive average awful bad beautiful better bewildered black bloody
 blue blue-eyed blushing bored brainy brave breakable bright busy calm
@@ -181,5 +200,5 @@ uninterested unsightly unusual upset uptight vast victorious vivacious
 wandering weary wicked wide-eyed wild witty worried worrisome wrong
 zany zealous`
 
-	QuestionWords = `how what when where which who whom whose why`
+	_QuestionWords = `how what when where which who whom whose why`
 )
