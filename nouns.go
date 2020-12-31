@@ -3,10 +3,10 @@ package english
 import "strings"
 
 func Nouns() []string {
-	return strings.Split(nouns, "\n")
+	return strings.Split(NounWords, "\n")
 }
 
-const nouns = `account
+const NounWords = `account
 act
 adjustment
 advertisement

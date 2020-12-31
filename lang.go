@@ -8,7 +8,7 @@ import (
 func NewLanguage() *Language {
 	lang := &Language{}
 
-	lang.verbs = lang.AddWords(Verb, Verbs())
+	lang.verbs = lang.AddWords(Verb, strings.Fields(VerbWords))
 	lang.adverbs = lang.AddWords(Adverb, Adverbs())
 	lang.nouns = lang.AddWords(Noun, Nouns())
 	lang.adj = lang.AddWords(Adjective, Adjectives())

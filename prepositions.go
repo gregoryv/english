@@ -3,10 +3,10 @@ package english
 import "strings"
 
 func Prepositions() []string {
-	return strings.Split(SingleWordPrepositions, "\n")
+	return strings.Split(SinglePrepositionWords, "\n")
 }
 
-const SingleWordPrepositions = `about
+const SinglePrepositionWords = `about
 beside
 near
 to
