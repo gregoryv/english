@@ -1,8 +1,10 @@
+// Command eng prints english words.
 package main
 
 import (
 	"fmt"
 	"os"
+	"strings"
 
 	"github.com/gregoryv/cmdline"
 	"github.com/gregoryv/english"
@@ -12,13 +14,9 @@ func main() {
 	var (
 		cli  = cmdline.NewParser(os.Args...)
 		help = cli.Flag("-h, --help")
-		p    = cli.Option(
-			"-p, --print",
-			"words",
-		).Bool()
-
-		r = cli.Option("-r, --random", "word").Bool()
-		w = os.Stderr
+		p    = cli.Option("-p, --print", "Print all words").Bool()
+		r    = cli.Option("-r, --random", "Print one random word").Int(0)
+		w    = os.Stderr
 	)
 
 	switch {
@@ -34,10 +32,10 @@ func main() {
 
 	switch {
 	case p:
-		fmt.Println(english.Words())
+		fmt.Println(strings.Join(english.Words(), " "))
 
-	case r:
-		fmt.Println(english.RandomWord())
+	case r > 0:
+		fmt.Println(strings.Join(english.RandomWords(r), " "))
 
 	default:
 		fmt.Println(len(english.Words()), "words")
