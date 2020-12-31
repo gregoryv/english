@@ -8,10 +8,10 @@ import (
 func NewLanguage() *Language {
 	lang := &Language{}
 
-	lang.verbs = lang.AddWords(Verb, strings.Fields(VerbWords))
+	lang.verbs = lang.addWords(Verb, VerbWords)
 	lang.adverbs = lang.AddWords(Adverb, Adverbs())
-	lang.nouns = lang.AddWords(Noun, Nouns())
-	lang.adj = lang.AddWords(Adjective, strings.Fields(AdjectiveWords))
+	lang.nouns = lang.addWords(Noun, NounWords)
+	lang.adj = lang.addWords(Adjective, AdjectiveWords)
 	lang.prepositions = lang.AddWords(Preposition, Prepositions())
 
 	lang.Generator = NewGenerator(lang)
@@ -28,8 +28,13 @@ type Language struct {
 	*Generator
 }
 
-// AddWords adds the slice of words with the given mode. Returns slice
-// of the added words. Empty strings cause a panic.
+func (me *Language) addWords(m Mode, text string) []Word {
+	return me.AddWords(m, strings.Fields(text))
+}
+
+// AddWords adds the words from the text with the given
+// mode. Returns slice of the added words. Empty strings cause a
+// panic.
 func (me *Language) AddWords(m Mode, inwords []string) []Word {
 	from := len(me.words)
 	for _, word := range inwords {
