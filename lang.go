@@ -8,26 +8,11 @@ func NewLanguage() *Language {
 	verbs := Verbs()
 	nouns := Nouns()
 	adj := Adjectives()
-	words := make([]Word, len(verbs)+len(nouns)+len(adj))
-	lang := &Language{words: words}
-	var i int
-	for _, word := range verbs {
-		words[i] = Word{Verb, word}
-		i++
-	}
-	lang.verbs = words[:i]
-	nounStart := i
-	for _, word := range nouns {
-		words[i] = Word{Noun, word}
-		i++
-	}
-	lang.nouns = words[nounStart:i]
-	adjStart := i
-	for _, word := range adj {
-		words[i] = Word{Adjective, word}
-		i++
-	}
-	lang.adj = words[adjStart:i]
+	lang := &Language{}
+
+	lang.verbs = lang.AddWords(Verb, verbs)
+	lang.nouns = lang.AddWords(Noun, nouns)
+	lang.adj = lang.AddWords(Adjective, adj)
 	lang.Generator = NewGenerator(lang)
 	return lang
 }
@@ -38,6 +23,16 @@ type Language struct {
 	adj   []Word
 	words []Word
 	*Generator
+}
+
+// AddWords adds the slice of words with the given mode. Returns slice
+// of the added words.
+func (me *Language) AddWords(m Mode, inwords []string) []Word {
+	from := len(me.words)
+	for _, word := range inwords {
+		me.words = append(me.words, Word{m, word})
+	}
+	return me.words[from : from+len(inwords)]
 }
 
 func (me *Language) Verbs() []Word      { return me.verbs }
