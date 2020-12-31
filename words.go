@@ -19,6 +19,23 @@ func Adverbs() []string {
 	return all
 }
 
+func Words() []string {
+	all := make([]string, 0)
+	for _, words := range []string{
+		SinglePrepositionWords,
+		HowAdverbWords,
+		WhenAdverbWords,
+		WhereAdverbWords,
+		WhatExtentAdverbWords,
+		VerbWords,
+		NounWords,
+		AdjectiveWords,
+	} {
+		all = append(all, strings.Fields(words)...)
+	}
+	return all
+}
+
 const (
 	SinglePrepositionWords = `about beside near to above between of
 towards across beyond off under after by on underneath against despite

@@ -11,7 +11,7 @@ func Test_Generator(t *testing.T) {
 	}
 
 	w := lang.RandWord()
-	if w.String() == "" {
+	if w == "" {
 		t.Error(w)
 	}
 }
