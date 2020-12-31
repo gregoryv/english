@@ -19,6 +19,7 @@ func Words() []string {
 		VerbWords,
 		NounWords,
 		AdjectiveWords,
+		QuestionWords,
 	} {
 		all = append(all, strings.Fields(words)...)
 	}
@@ -179,4 +180,6 @@ thankful thoughtful thoughtless tired tough troubled ugliest ugly
 uninterested unsightly unusual upset uptight vast victorious vivacious
 wandering weary wicked wide-eyed wild witty worried worrisome wrong
 zany zealous`
+
+	QuestionWords = `how what when where which who whom whose why`
 )
