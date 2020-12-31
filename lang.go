@@ -11,7 +11,7 @@ func NewLanguage() *Language {
 	lang.verbs = lang.AddWords(Verb, strings.Fields(VerbWords))
 	lang.adverbs = lang.AddWords(Adverb, Adverbs())
 	lang.nouns = lang.AddWords(Noun, Nouns())
-	lang.adj = lang.AddWords(Adjective, Adjectives())
+	lang.adj = lang.AddWords(Adjective, strings.Fields(AdjectiveWords))
 	lang.prepositions = lang.AddWords(Preposition, Prepositions())
 
 	lang.Generator = NewGenerator(lang)
