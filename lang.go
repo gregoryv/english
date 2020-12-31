@@ -8,11 +8,11 @@ import (
 func NewLanguage() *Language {
 	lang := &Language{}
 
-	lang.verbs = lang.addWords(Verb, VerbWords)
-	lang.adverbs = lang.AddWords(Adverb, Adverbs())
-	lang.nouns = lang.addWords(Noun, NounWords)
-	lang.adj = lang.addWords(Adjective, AdjectiveWords)
-	lang.prepositions = lang.AddWords(Preposition, Prepositions())
+	lang.verbs = lang.AddWords(Verb, VerbWords)
+	lang.adverbs = lang.addWords(Adverb, Adverbs())
+	lang.nouns = lang.AddWords(Noun, NounWords)
+	lang.adj = lang.AddWords(Adjective, AdjectiveWords)
+	lang.prepositions = lang.addWords(Preposition, Prepositions())
 
 	lang.Generator = NewGenerator(lang)
 	return lang
@@ -28,20 +28,15 @@ type Language struct {
 	*Generator
 }
 
-func (me *Language) addWords(m Mode, text string) []Word {
-	return me.AddWords(m, strings.Fields(text))
+// AddWords adds the words from the text with the given
+// mode. Returns slice of the added words.
+func (me *Language) AddWords(m Mode, text string) []Word {
+	return me.addWords(m, strings.Fields(text))
 }
 
-// AddWords adds the words from the text with the given
-// mode. Returns slice of the added words. Empty strings cause a
-// panic.
-func (me *Language) AddWords(m Mode, inwords []string) []Word {
+func (me *Language) addWords(m Mode, inwords []string) []Word {
 	from := len(me.words)
 	for _, word := range inwords {
-		if len(strings.TrimSpace(word)) == 0 {
-			last := me.words[len(me.words)-1].String()
-			panic(fmt.Errorf("Empty word after %v %s", m, last))
-		}
 		me.words = append(me.words, Word{m, word})
 	}
 	return me.words[from : from+len(inwords)]
