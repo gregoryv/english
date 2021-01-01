@@ -16,12 +16,26 @@ func splitWords() []string {
 	all := make([]string, 0, WordCount)
 	for _, words := range []string{
 		SinglePrepositionWords,
+
 		HowAdverbWords,
 		WhenAdverbWords,
 		WhereAdverbWords,
 		WhatExtentAdverbWords,
+
 		VerbWords,
 		NounWords,
+
+		PersonalPronounWords,
+		PossessivePronounWords,
+		IndependentPossessivePronounWords,
+		ObjectPronounWords,
+		IndefinitePronounWords,
+		ReflexivePronounWords,
+		DemonstrativePronounWords,
+		InterrogativePronounWords,
+		RelativePronounWords,
+		ArchaicPronounWords,
+
 		AdjectiveWords,
 		QuestionWords,
 	} {
@@ -39,7 +53,7 @@ func init() {
 
 // The words are sorted.
 const (
-	WordCount = 1403 // Of all the words
+	WordCount = 1497 // All the words
 
 	SinglePrepositionWords = _SinglePrepositionWords
 
@@ -48,8 +62,20 @@ const (
 	WhereAdverbWords      = _WhereAdverbWords
 	WhatExtentAdverbWords = _WhatExtentAdverbWords
 
-	VerbWords      = _VerbWords
-	NounWords      = _NounWords
+	VerbWords = _VerbWords
+	NounWords = _NounWords
+
+	PersonalPronounWords              = _PersonalPronounWords
+	PossessivePronounWords            = _PossessivePronounWords
+	IndependentPossessivePronounWords = _IndependentPossessivePronounWords
+	ObjectPronounWords                = _ObjectPronounWords
+	IndefinitePronounWords            = _IndefinitePronounWords
+	ReflexivePronounWords             = _ReflexivePronounWords // also same as intensive pronouns
+	DemonstrativePronounWords         = _DemonstrativePronounWords
+	InterrogativePronounWords         = _InterrogativePronounWords
+	RelativePronounWords              = _RelativePronounWords
+	ArchaicPronounWords               = _ArchaicPronounWords
+
 	AdjectiveWords = _AdjectiveWords
 	QuestionWords  = _QuestionWords
 )
@@ -179,6 +205,33 @@ umbrella unit use value verse vessel view voice walk wall war wash
 waste watch water wave wax way weather week weight wheel whip whistle
 wind window wine wing winter wire woman wood wool word work worm wound
 writing year`
+
+	_PersonalPronounWords = `I you he she it we they`
+
+	_PossessivePronounWords = `my our your his her its their`
+
+	_IndependentPossessivePronounWords = `mine ours yours his hers its
+	theirs`
+
+	_ObjectPronounWords = `me you her him it us them`
+
+	_IndefinitePronounWords = `all another any anybody anyone anything
+    both each either everybody everyone everything few many most
+    neither nobody none nothing one other others several some somebody
+    someone something such`
+
+	_ReflexivePronounWords = `myself yourself herself himself itself
+	ourselves yourselves themselves`
+
+	_DemonstrativePronounWords = `such that these this those`
+
+	_InterrogativePronounWords = `what whatever which whichever who
+    whoever whom whomever whose`
+
+	_RelativePronounWords = `as that what whatever which whichever
+    who whoever whom whomever whose`
+
+	_ArchaicPronounWords = `thou thee thy thine ye`
 
 	_AdjectiveWords = `adorable adventurous aggressive agreeable
 alert alive amused angry annoyed annoying anxious arrogant ashamed
