@@ -1,5 +1,5 @@
 /*
-Package english provides words in the english language.
+Package english provides words in the English language.
 
 */
 package english
@@ -9,7 +9,8 @@ import (
 	"strings"
 )
 
-// Words returns sorted list of all the english words defined by this package.
+// Words returns sorted list of all the English words defined by this
+// package.
 func Words() []string { return _words }
 
 func splitWords() []string {
