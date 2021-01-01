@@ -11,7 +11,7 @@ import (
 
 // Words returns sorted list of all the english words defined by this package.
 func Words() []string {
-	all := make([]string, 0, 1394)
+	all := make([]string, 0, WordCount)
 	for _, words := range []string{
 		SinglePrepositionWords,
 		HowAdverbWords,
@@ -31,6 +31,8 @@ func Words() []string {
 
 // The words are sorted.
 const (
+	WordCount = 1403 // Of all the words
+
 	SinglePrepositionWords = _SinglePrepositionWords
 
 	HowAdverbWords        = _HowAdverbWords
