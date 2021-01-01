@@ -1,4 +1,4 @@
-// Command eng prints english words.
+// Command english provides ways to query english words.
 package main
 
 import (
