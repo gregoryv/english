@@ -10,7 +10,9 @@ import (
 )
 
 // Words returns sorted list of all the english words defined by this package.
-func Words() []string {
+func Words() []string { return _words }
+
+func splitWords() []string {
 	all := make([]string, 0, WordCount)
 	for _, words := range []string{
 		SinglePrepositionWords,
@@ -27,6 +29,12 @@ func Words() []string {
 	}
 	sort.Strings(all)
 	return all
+}
+
+var _words []string
+
+func init() {
+	_words = splitWords()
 }
 
 // The words are sorted.

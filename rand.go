@@ -19,15 +19,14 @@ func init() {
 
 // RandomWord returns a random english word.
 func RandomWord() string {
-	return RandomWords(1)[0]
+	return _words[rand.Intn(WordCount)]
 }
 
 // RandomWords returns a slice of random english words.
 func RandomWords(n int) []string {
 	res := make([]string, n)
-	words := Words()
 	for i := range res {
-		res[i] = words[rand.Intn(len(words))]
+		res[i] = _words[rand.Intn(WordCount)]
 	}
 	return res
 }
