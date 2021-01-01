@@ -39,6 +39,7 @@ func splitWords() []string {
 
 		AdjectiveWords,
 		QuestionWords,
+		ConjunctionWords,
 	} {
 		all = append(all, strings.Fields(words)...)
 	}
@@ -54,7 +55,7 @@ func init() {
 
 // The words are sorted.
 const (
-	WordCount = 1497 // All the words
+	WordCount = 1522 // All the words
 
 	SinglePrepositionWords = _SinglePrepositionWords
 
@@ -77,8 +78,9 @@ const (
 	RelativePronounWords              = _RelativePronounWords
 	ArchaicPronounWords               = _ArchaicPronounWords
 
-	AdjectiveWords = _AdjectiveWords
-	QuestionWords  = _QuestionWords
+	AdjectiveWords   = _AdjectiveWords
+	QuestionWords    = _QuestionWords
+	ConjunctionWords = _ConjunctionWords
 )
 
 const (
@@ -264,4 +266,8 @@ wandering weary wicked wide-eyed wild witty worried worrisome wrong
 zany zealous`
 
 	_QuestionWords = `how what when where which who whom whose why`
+
+	_ConjunctionWords = `and that but or as if when than because
+    while where after so though since until whether before although
+    nor like once unless now except`
 )
