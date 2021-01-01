@@ -1,7 +1,6 @@
 /*
 Package english provides words in the english language.
 
-
 */
 package english
 

@@ -11,7 +11,6 @@ import (
 	"unicode"
 
 	"github.com/gdamore/tcell"
-	"github.com/gdamore/tcell/encoding"
 	"github.com/mattn/go-runewidth"
 )
 
@@ -186,7 +185,7 @@ Quit        Ctrl-c`
 
 func setup() (tcell.Screen, tcell.Style) {
 	// Add all characters in the world
-	encoding.Register()
+	//encoding.Register()
 
 	screen, e := tcell.NewScreen()
 	if e != nil {
