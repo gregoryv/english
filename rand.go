@@ -35,7 +35,11 @@ func RandomWords(n int) []string {
 // RandomStatement returns a sentence of random english words, trying
 // to be as correct as possible. TODO implement grammar rules.
 func RandomStatement(min, max int) []string {
-	res := make([]string, max)
+	if min == 0 {
+		panic("min must be > 0")
+	}
+	size := rand.Intn(max-min) + min
+	res := make([]string, size)
 	for i := range res {
 		res[i] = _words[rand.Intn(WordCount)]
 	}
@@ -45,11 +49,24 @@ func RandomStatement(min, max int) []string {
 // RandomQuestion returns a question of random english words, trying
 // to be as correct as possible. TODO implement grammar rules.
 func RandomQuestion(min, max int) []string {
-	return []string{
-		randomField(_QuestionWords),
-		randomField(_VerbWords),
-		RandomWord(),
+	if min == 0 {
+		panic("min must be > 0")
 	}
+	size := rand.Intn(max-min) + min
+	res := make([]string, size)
+	if len(res) >= 1 {
+		res[0] = randomField(_QuestionWords)
+	}
+	if len(res) >= 2 {
+		res[1] = randomField(_VerbWords)
+	}
+
+	if len(res) >= 3 {
+		for i := range res[2:] {
+			res[i+2] = RandomWord()
+		}
+	}
+	return res
 }
 
 func randomField(txt string) string {
