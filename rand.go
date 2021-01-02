@@ -4,6 +4,7 @@ import (
 	crand "crypto/rand"
 	"encoding/binary"
 	"math/rand"
+	"strings"
 	"time"
 )
 
@@ -29,4 +30,18 @@ func RandomWords(n int) []string {
 		res[i] = _words[rand.Intn(WordCount)]
 	}
 	return res
+}
+
+func RandomQuestion() []string {
+	return []string{
+		randomField(_QuestionWords),
+		RandomWord(),
+		RandomWord(),
+	}
+}
+
+func randomField(txt string) string {
+	fields := strings.Fields(txt)
+	return fields[rand.Intn(len(fields))]
+
 }

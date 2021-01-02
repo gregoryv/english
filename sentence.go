@@ -4,22 +4,20 @@ import (
 	"strings"
 )
 
-type Sentence []string
-
-// String returns a string with first word capitalized and ending with
-// a dot.
-func (me Sentence) String() string {
+// Sentence returns a string starting with capitalized word and ending
+// with the given byte.
+func Sentence(words []string, end byte) string {
 	var sb strings.Builder
-	for i, word := range me {
+	for i, word := range words {
 		if i == 0 {
 			sb.WriteString(strings.Title(word))
 		} else {
 			sb.WriteString(word)
 		}
-		if i < len(me)-1 {
+		if i < len(words)-1 {
 			sb.WriteByte(' ')
 		}
 	}
-	sb.WriteByte('.')
+	sb.WriteByte(end)
 	return sb.String()
 }

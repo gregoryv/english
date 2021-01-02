@@ -10,7 +10,7 @@ func randomText() string {
 	sentences := make([]string, 5)
 	for i := range sentences {
 		words := english.RandomWords(5)
-		sentences[i] = english.Sentence(words).String()
+		sentences[i] = english.Sentence(words, '.')
 	}
 	return strings.Join(sentences, " ")
 }

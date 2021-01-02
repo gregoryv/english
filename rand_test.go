@@ -31,3 +31,8 @@ func Test_RandomWords(t *testing.T) {
 		t.Error("poor randomness")
 	}
 }
+
+func Test_RandomQuestion(t *testing.T) {
+	q := RandomQuestion()
+	t.Log(Sentence(q, '?'))
+}
