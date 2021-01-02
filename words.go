@@ -14,7 +14,8 @@ import (
 func Words() []string { return _words }
 
 func splitWords() []string {
-	all := make([]string, 0, WordCount)
+	all := make(map[string]int)
+
 	for _, words := range []string{
 		SinglePrepositionWords,
 
@@ -41,10 +42,16 @@ func splitWords() []string {
 		QuestionWords,
 		ConjunctionWords,
 	} {
-		all = append(all, strings.Fields(words)...)
+		for _, word := range strings.Fields(words) {
+			all[word]++
+		}
 	}
-	sort.Strings(all)
-	return all
+	res := make([]string, 0)
+	for word, _ := range all {
+		res = append(res, word)
+	}
+	sort.Strings(res)
+	return res
 }
 
 var _words []string
@@ -53,10 +60,10 @@ func init() {
 	_words = splitWords()
 }
 
-// The words are sorted.
 const (
-	WordCount = 1522 // All the words
+	WordCount = 1411 // All distinct words
 
+	// The words in each constant are sorted.
 	SinglePrepositionWords = _SinglePrepositionWords
 
 	HowAdverbWords        = _HowAdverbWords
