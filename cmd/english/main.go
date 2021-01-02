@@ -16,7 +16,7 @@ func main() {
 		help = cli.Flag("-h, --help")
 		p    = cli.Option("-p, --print", "Print all words").Bool()
 		r    = cli.Option("-r, --random", "Print random words").Int(0)
-		rs   = cli.Option("-rs, --random-sentence", "Print random sentence").Int(0)
+		rs   = cli.Option("-rs, --random-statement", "Print random statement").Int(0)
 		rq   = cli.Option("-rq, --random-question", "Print random question").Int(0)
 		w    = os.Stderr
 	)
@@ -40,7 +40,7 @@ func main() {
 		fmt.Println(strings.Join(english.RandomWords(r), " "))
 
 	case rs > 0:
-		words := english.RandomSentence(1, rs)
+		words := english.RandomStatement(1, rs)
 		fmt.Println(english.Sentence(words, '.'))
 
 	case rq > 0:

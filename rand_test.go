@@ -32,9 +32,9 @@ func Test_RandomWords(t *testing.T) {
 	}
 }
 
-func Test_RandomSentence(t *testing.T) {
+func Test_RandomStatement(t *testing.T) {
 	max := 5
-	q := RandomSentence(1, max)
+	q := RandomStatement(1, max)
 	if len(q) > max {
 		t.Errorf("max exceeded: %q", Sentence(q, '.'))
 	}

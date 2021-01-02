@@ -32,9 +32,9 @@ func RandomWords(n int) []string {
 	return res
 }
 
-// RandomSentence returns a sentence of random english words, trying
+// RandomStatement returns a sentence of random english words, trying
 // to be as correct as possible. TODO implement grammar rules.
-func RandomSentence(min, max int) []string {
+func RandomStatement(min, max int) []string {
 	res := make([]string, max)
 	for i := range res {
 		res[i] = _words[rand.Intn(WordCount)]
@@ -47,7 +47,7 @@ func RandomSentence(min, max int) []string {
 func RandomQuestion(min, max int) []string {
 	return []string{
 		randomField(_QuestionWords),
-		RandomWord(),
+		randomField(_VerbWords),
 		RandomWord(),
 	}
 }
