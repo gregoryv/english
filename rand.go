@@ -67,20 +67,20 @@ func RandomQuestion(min, max int) []string {
 	if err != nil {
 		panic(err)
 	}
-	res := make([]string, size)
+	res := make(Template, size)
 	if len(res) >= 1 {
-		res[0] = randomField(_QuestionWords)
+		res[0] = ClassQuestion
 	}
 	if len(res) >= 2 {
-		res[1] = randomField(_VerbWords)
+		res[1] = ClassVerb
 	}
 
 	if len(res) >= 3 {
 		for i := range res[2:] {
-			res[i+2] = RandomWord()
+			res[i+2] = ClassNoun
 		}
 	}
-	return res
+	return res.Build()
 }
 
 func randomField(txt string) string {
