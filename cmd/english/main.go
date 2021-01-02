@@ -40,11 +40,11 @@ func main() {
 		fmt.Println(strings.Join(english.RandomWords(r), " "))
 
 	case rs > 0:
-		words := english.RandomStatement(1, rs)
+		words := english.RandomStatement(rs, rs)
 		fmt.Println(english.Sentence(words, '.'))
 
 	case rq > 0:
-		words := english.RandomQuestion(1, rq)
+		words := english.RandomQuestion(rq, rq)
 		fmt.Println(english.Sentence(words, '?'))
 
 	default:

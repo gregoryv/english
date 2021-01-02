@@ -3,6 +3,7 @@ package english
 import (
 	crand "crypto/rand"
 	"encoding/binary"
+	"fmt"
 	"math/rand"
 	"strings"
 	"time"
@@ -35,10 +36,10 @@ func RandomWords(n int) []string {
 // RandomStatement returns a sentence of random english words, trying
 // to be as correct as possible. TODO implement grammar rules.
 func RandomStatement(min, max int) []string {
-	if min == 0 {
-		panic("min must be > 0")
+	size, err := randSize(min, max)
+	if err != nil {
+		panic(err)
 	}
-	size := rand.Intn(max-min) + min
 	res := make([]string, size)
 	for i := range res {
 		res[i] = _words[rand.Intn(WordCount)]
@@ -46,13 +47,26 @@ func RandomStatement(min, max int) []string {
 	return res
 }
 
+func randSize(min, max int) (int, error) {
+	if min == 0 {
+		return 0, fmt.Errorf("min must be > 0")
+	}
+	if min > max {
+		return 0, fmt.Errorf("min > max")
+	}
+	if min == max {
+		return max, nil
+	}
+	return rand.Intn(max-min) + min, nil
+}
+
 // RandomQuestion returns a question of random english words, trying
 // to be as correct as possible. TODO implement grammar rules.
 func RandomQuestion(min, max int) []string {
-	if min == 0 {
-		panic("min must be > 0")
+	size, err := randSize(min, max)
+	if err != nil {
+		panic(err)
 	}
-	size := rand.Intn(max-min) + min
 	res := make([]string, size)
 	if len(res) >= 1 {
 		res[0] = randomField(_QuestionWords)
