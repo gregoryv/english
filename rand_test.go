@@ -1,6 +1,8 @@
 package english
 
-import "testing"
+import (
+	"testing"
+)
 
 func Test_RandomStatement(t *testing.T) {
 	ok := func(min, max int) {

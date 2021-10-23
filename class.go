@@ -1,6 +1,9 @@
 package english
 
-import "fmt"
+import (
+	"fmt"
+	"log"
+)
 
 type Class int
 
@@ -27,18 +30,42 @@ const (
 
 	ClassQuestion
 	ClassConjunction
+
+	finalClass // for testing ranges
 )
 
-// Random
+// Random returns a random word of the given class.
 func (me Class) Random() string {
-	switch me {
-	case ClassNoun:
-		return randomField(_NounWords)
-	case ClassQuestion:
-		return randomField(_QuestionWords)
-	case ClassVerb:
-		return randomField(_VerbWords)
-	default:
-		panic(fmt.Errorf("unknown class: %v", me))
+	fn, found := classMap[me]
+	if !found {
+		err := fmt.Errorf("unknown class: %v", me)
+		log.Println(err)
+		return ""
 	}
+	return fn()
+}
+
+var classMap = map[Class]func() string{
+	ClassNoun:      func() string { return randomField(_NounWords) },
+	ClassVerb:      func() string { return randomField(_VerbWords) },
+	ClassAdjective: func() string { return randomField(_AdjectiveWords) },
+
+	ClassHowAdverb:        func() string { return randomField(_HowAdverbWords) },
+	ClassWhenAdverb:       func() string { return randomField(_WhenAdverbWords) },
+	ClassWhereAdverb:      func() string { return randomField(_WhereAdverbWords) },
+	ClassWhatExtentAdverb: func() string { return randomField(_WhatExtentAdverbWords) },
+
+	ClassPersonalPronoun:              func() string { return randomField(_PersonalPronounWords) },
+	ClassPossessivePronoun:            func() string { return randomField(_PossessivePronounWords) },
+	ClassIndependentPossessivePronoun: func() string { return randomField(_IndependentPossessivePronounWords) },
+	ClassObjectPronoun:                func() string { return randomField(_ObjectPronounWords) },
+	ClassIndefinitePronoun:            func() string { return randomField(_IndefinitePronounWords) },
+	ClassReflexivePronoun:             func() string { return randomField(_ReflexivePronounWords) },
+	ClassDemonstrativePronoun:         func() string { return randomField(_DemonstrativePronounWords) },
+	ClassInterrogativePronoun:         func() string { return randomField(_InterrogativePronounWords) },
+	ClassRelativePronoun:              func() string { return randomField(_RelativePronounWords) },
+	ClassArchaicPronoun:               func() string { return randomField(_ArchaicPronounWords) },
+
+	ClassQuestion:    func() string { return randomField(_QuestionWords) },
+	ClassConjunction: func() string { return randomField(_ConjunctionWords) },
 }

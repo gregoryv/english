@@ -6,6 +6,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [unreleased]
 
+- Renamed RandomSentence to RandomStatement
 - Renamed cmd/eng to cmd/english
 - Optimized random functions, init slice of words
 
