@@ -3,7 +3,6 @@ package main
 
 import (
 	"fmt"
-	"os"
 	"strings"
 
 	"github.com/gregoryv/cmdline"
@@ -12,25 +11,13 @@ import (
 
 func main() {
 	var (
-		cli  = cmdline.NewParser(os.Args...)
-		help = cli.Flag("-h, --help")
-		p    = cli.Option("-p, --print", "Print all words").Bool()
-		r    = cli.Option("-r, --random", "Print random words").Int(0)
-		rs   = cli.Option("-rs, --random-statement", "Print random statement").Int(0)
-		rq   = cli.Option("-rq, --random-question", "Print random question").Int(0)
-		w    = os.Stderr
+		cli = cmdline.NewBasicParser()
+		p   = cli.Option("-p, --print", "Print all words").Bool()
+		r   = cli.Option("-r, --random", "Print random words").Int(0)
+		rs  = cli.Option("-rs, --random-statement", "Print random statement").Int(0)
+		rq  = cli.Option("-rq, --random-question", "Print random question").Int(0)
 	)
-
-	switch {
-	case help:
-		cli.WriteUsageTo(w)
-		os.Exit(0)
-
-	case !cli.Ok():
-		fmt.Fprintln(w, cli.Error())
-		fmt.Fprintln(w, "Try --help for more information")
-		os.Exit(1)
-	}
+	cli.Parse()
 
 	switch {
 	case p:
