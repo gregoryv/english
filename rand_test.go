@@ -1,8 +1,23 @@
 package english
 
 import (
+	"fmt"
+	"math/rand"
 	"testing"
 )
+
+func Example_randomSentences() {
+	rand.Seed(int64(0)) // optional, control the randomness
+	min, max := 4, 8    // words
+
+	q := RandomQuestion(min, max)
+	s := RandomStatement(min, max)
+	fmt.Println(Sentence(q, '?'))
+	fmt.Println(Sentence(s, '.'))
+	// output:
+	// How belong theory drink mist letter?
+	// Consult mine hook deserve impossible.
+}
 
 func Test_RandomStatement(t *testing.T) {
 	ok := func(min, max int) {
