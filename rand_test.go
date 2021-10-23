@@ -7,8 +7,8 @@ import (
 )
 
 func Example_randomSentences() {
-	rand.Seed(int64(0)) // optional, control the randomness
-	min, max := 4, 8    // words
+	rand.Seed(0)     // optional, control the randomness
+	min, max := 4, 8 // words
 
 	q := RandomQuestion(min, max)
 	s := RandomStatement(min, max)

@@ -2,6 +2,7 @@ package english
 
 import "fmt"
 
+// Templates are used to make semi random slices of words
 type Template []interface{}
 
 func (me Template) Build() []string {

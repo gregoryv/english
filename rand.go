@@ -9,6 +9,7 @@ import (
 	"time"
 )
 
+// init rand Seed properly
 func init() {
 	var b [8]byte
 	_, err := crand.Read(b[:])
