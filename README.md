@@ -2,7 +2,10 @@
 english provides words from the English language
 
 The purpose is to provide easy access to common English words when you
-need to generate text.
+need to generate text. Commands using this package can be found at
+
+- [gregoryv/textgen](https://github.com/gregoryv/textgen)
+- [gregoryv/typer](https://github.com/gregoryv/typer)
 
 Words come from sources like
 
