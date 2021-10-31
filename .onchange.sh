@@ -12,5 +12,4 @@ case $extension in
 esac
 go test -coverprofile /tmp/c.out ./...
 uncover /tmp/c.out
-go install ./cmd/...
-size $GOBIN/english $GOBIN/typer
+
